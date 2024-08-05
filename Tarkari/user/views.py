@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .forms import Login
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login,logout
 from django.http import HttpResponse
 
 def user_login(request):
@@ -16,5 +16,9 @@ def user_login(request):
                 return HttpResponse("the crenditals is not matched")
     else:
         form=Login
-        return render(request,"login.html",{'form':form})
+        return render(request,"user-login.html",{'form':form})
 
+
+def user_logout(request):
+    logout(request)
+    return redirect('logout.html')
