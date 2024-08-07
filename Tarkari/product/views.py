@@ -9,5 +9,4 @@ def create_product(request):
             return redirect("product_list")
     else:
         form=ProductForm()
-        print(form)
     return render(request,'create_product.html',{'form':form})
